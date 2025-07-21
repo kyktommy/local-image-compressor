@@ -276,7 +276,8 @@
         import React from "https://esm.sh/react@19";
         import ReactDOM from "https://esm.sh/react-dom@19/client";
         import * as jpegModule from "https://unpkg.com/@jsquash/jpeg?module";
-        import * as pngModule from "https://unpkg.com/@jsquash/oxipng?module";
+        import * as pngModule from "https://unpkg.com/@jsquash/png?module";
+        import * as oxipngModule from "https://unpkg.com/@jsquash/oxipng?module";
         import * as webpModule from "https://unpkg.com/@jsquash/webp?module";
 
         const { useState, useRef, useCallback } = React;
@@ -410,7 +411,7 @@
                                 compressedBuffer = await jpegModule.encode(imageData, { quality: quality * 100 });
                                 extension = 'jpg';
                             } else if (outputFormat === 'png') {
-                                compressedBuffer = await pngModule.optimise(imageData, { level: 4 - Math.round(quality * 3) });
+                                compressedBuffer = await oxipngModule.optimise(imageData, { level: 4 - Math.round(quality * 3) });
                                 extension = 'png';
                             } else {
                                 compressedBuffer = await webpModule.encode(imageData, { quality: quality * 100 });
